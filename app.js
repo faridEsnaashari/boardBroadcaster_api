@@ -5,7 +5,8 @@ global.paths = require('./config').paths;
 const express = require("express");
 const cors = require("cors")
 const bodyParser = require("body-parser");
-const responser = require(`${ global.paths.tools.responser }`);
+const responser = require(`${ global.paths.middlewares.responser }`);
+const mongooseConnector = require(`${ global.paths.tools.mongooseConnector }`);
 
 const v1 = require(`${ global.paths.v1.path }`);
 
