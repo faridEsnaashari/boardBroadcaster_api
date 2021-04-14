@@ -8,11 +8,17 @@ const env = {
         NODE_ENV: process.env.NODE_ENV,
         SERVER_PORT: process.env.PORT
     },
+    MONGOOSE: {
+        MONGOOSE_URL: process.env.MONGOOSE_URL,
+    },
 };
 
 const paths = {
+    middlewares: {
+        responser: path.resolve("./api/middlewares/responser"),
+    },
     tools: {
-        responser: path.resolve("./api/tools/responser"),
+        mongooseConnector: path.resolve("./api/tools/mongooseConnector"),
     },
     v1: {
         path: path.resolve("./api/v1/v1"),
