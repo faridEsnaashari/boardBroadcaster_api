@@ -10,6 +10,7 @@ const env = {
     },
     MONGOOSE: {
         MONGOOSE_URL: process.env.MONGOOSE_URL,
+        DATABASE_NAME: process.env.DATABASE_NAME,
     },
 };
 
@@ -27,6 +28,9 @@ const paths = {
         },
         routes: {
             register: path.resolve("./api/v1/routes/usersManagement/register"),
+        },
+        models: {
+            User: path.resolve("./api/v1/mongooseModels/UserModel"),
         },
     },
 };
