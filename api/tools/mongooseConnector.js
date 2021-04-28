@@ -7,9 +7,15 @@ const option = {
     useCreateIndex: true
 };
 
-mongoose.connect(global.env.MONGOOSE.MONGOOSE_URL, option)
+const url = global.env.MONGOOSE.MONGOOSE_URL;
+const databaseName = global.env.MONGOOSE.DATABASE_NAME;
+mongoose.connect(`${ url }/${ databaseName }`, option)
     .then(() => {
-        console.log("mongoose connected successfully");
+        console.log("###############################");
+        console.log(`mongoose connected successfully to database: ${ databaseName }`);
+        console.log("connection options: ");
+        console.log(option);
+        console.log("###############################");
     })
     .catch(err => console.error(err))
 
