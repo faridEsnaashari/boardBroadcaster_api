@@ -16,6 +16,10 @@ const env = {
         AES_SECRET_KEY: process.env.AES_SECRET_KEY,
         JWT_SECRET_KEY: process.env.JWT_SECRET_KEY,
     },
+    GMAIL: {
+        GMAIL_ID: process.env.GMAIL_ID,
+        GMAIL_PASSWORD: process.env.GMAIL_PASSWORD,
+    },
 };
 
 const paths = {
@@ -26,6 +30,7 @@ const paths = {
         mongooseConnector: path.resolve("./api/tools/mongooseConnector"),
         rendomVerificationCodeGenerator: path.resolve("./api/tools/randomVerifationCodeGenerator"),
         validationTools: path.resolve("./api/tools/validationTools"),
+        nodemailer: path.resolve("./api/tools/nodeMailer"),
     },
     v1: {
         path: path.resolve("./api/v1/v1"),
