@@ -35,6 +35,7 @@ const paths = {
     },
     v1: {
         path: path.resolve("./api/v1/v1"),
+        mongooseModels: path.resolve("./api/v1/mongooseModels/models"),
         controllers: {
             register: path.resolve("./api/v1/controllers/usersManagement/register"),
         },
@@ -43,9 +44,6 @@ const paths = {
         },
         routes: {
             register: path.resolve("./api/v1/routes/usersManagement/register"),
-        },
-        models: {
-            User: path.resolve("./api/v1/mongooseModels/UserModel"),
         },
     },
 };
