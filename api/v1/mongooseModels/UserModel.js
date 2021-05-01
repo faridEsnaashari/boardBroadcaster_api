@@ -45,7 +45,16 @@ const addVerificationCode = function(){
 
 const getVerificationToken = function(payload){
     const secretKey = global.env.SECRET_KEYS.JWT_SECRET_KEY;
-    return jwt.sign(payload, secretKey);
+    const tokenPromise = new Promise((resolve, reject) => {
+        jwt.sign(payload, secretKey, (err, token) => {
+            if(err){
+                reject(err);
+            }
+            resolve(token);
+        });
+    });
+
+    return tokenPromise;
 };
 
 const encryptPassword = function(next){
