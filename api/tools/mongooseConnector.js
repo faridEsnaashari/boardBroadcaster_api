@@ -1,10 +1,12 @@
-let mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const { initiateModels } = require(`${ global.paths.v1.mongooseModels }`);
 
 const option = {
     useUnifiedTopology: true,
     useNewUrlParser: true,
     useFindAndModify: false,
-    useCreateIndex: true
+    useCreateIndex: true,
+    autoIndex: true,
 };
 
 const url = global.env.MONGOOSE.MONGOOSE_URL;
@@ -17,6 +19,7 @@ mongoose.connect(`${ url }/${ databaseName }`, option)
         console.log(option);
         console.log("###############################");
     })
+    .then(() => initiateModels())
     .catch(err => console.error(err))
 
 module.exports = mongoose;
