@@ -1,26 +1,27 @@
 const { IsValidEmail, IsValidPassword, IsUndefinedOrNull } = require(`${ global.paths.tools.validationTools }`);
+const { VALIDATION_ERR } = require(`${ global.paths.tools.statusCodes }`);
 
 const postValidator = (req, res, next) => {
     const { email, name, password } = req.body;
 
     if(IsUndefinedOrNull(email)){
-        res.responser(400, "undefined field", { field: "email" });
+        return res.responser(VALIDATION_ERR, "undefined field", { field: "email" });
     }
 
     if(IsUndefinedOrNull(name)){
-        res.responser(400, "undefined field", { field: "name" });
+        return res.responser(VALIDATION_ERR, "undefined field", { field: "name" });
     }
 
     if(IsUndefinedOrNull(password)){
-        res.responser(400, "undefined field", { field: "password" });
+        return res.responser(VALIDATION_ERR, "undefined field", { field: "password" });
     }
 
     if(!IsValidEmail(email)){
-        res.responser(400, "wrong format", { field: "email" });
+        return res.responser(VALIDATION_ERR, "wrong format", { field: "email" });
     }
 
     if(!IsValidPassword(password)){
-        res.responser(400, "wrong format", { field: "password" });
+        return res.responser(VALIDATION_ERR, "wrong format", { field: "password" });
     }
 
     next();
