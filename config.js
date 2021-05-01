@@ -6,7 +6,8 @@ const env = {
     GENERAL: {
         ROOT_ENDPOINT: process.env.ROOT_ENDPOINT,
         NODE_ENV: process.env.NODE_ENV,
-        SERVER_PORT: process.env.PORT
+        SERVER_PORT: process.env.PORT,
+        APP_URL: process.env.APP_URL,
     },
     MONGOOSE: {
         MONGOOSE_URL: process.env.MONGOOSE_URL,
