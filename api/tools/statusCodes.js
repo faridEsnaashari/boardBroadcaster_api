@@ -1,0 +1,6 @@
+module.exports = {
+    VALIDATION_ERR: 400,
+    NOTFOUND_ERR: 404,
+    CONFILICT_ERR: 409,
+    INTERNAL_ERR: 500,
+};
