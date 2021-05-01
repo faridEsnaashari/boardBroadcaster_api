@@ -32,6 +32,8 @@ const paths = {
         rendomVerificationCodeGenerator: path.resolve("./api/tools/randomVerifationCodeGenerator"),
         validationTools: path.resolve("./api/tools/validationTools"),
         nodemailer: path.resolve("./api/tools/nodeMailer"),
+        statusCodes: path.resolve("./api/tools/statusCodes"),
+        mongoErrors: path.resolve("./api/tools/mongoErrors"),
     },
     v1: {
         path: path.resolve("./api/v1/v1"),
