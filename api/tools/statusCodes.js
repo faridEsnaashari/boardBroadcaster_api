@@ -3,4 +3,5 @@ module.exports = {
     NOTFOUND_ERR: 404,
     CONFILICT_ERR: 409,
     INTERNAL_ERR: 500,
+    SUCCESS_MSG: 200,
 };
