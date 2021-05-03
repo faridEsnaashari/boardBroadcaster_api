@@ -40,12 +40,15 @@ const paths = {
         mongooseModels: path.resolve("./api/v1/mongooseModels/models"),
         controllers: {
             register: path.resolve("./api/v1/controllers/usersManagement/register"),
+            resendVerificationMail: path.resolve("./api/v1/controllers/usersManagement/resendVerificationMail"),
         },
         validators: {
             register: path.resolve("./api/v1/validators/usersManagement/register"),
+            resendVerificationMail: path.resolve("./api/v1/validators/usersManagement/resendVerificationMail"),
         },
         routes: {
             register: path.resolve("./api/v1/routes/usersManagement/register"),
+            resendVerificationMail: path.resolve("./api/v1/routes/usersManagement/resendVerificationMail"),
         },
     },
 };
