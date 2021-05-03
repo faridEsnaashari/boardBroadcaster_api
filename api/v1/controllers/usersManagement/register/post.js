@@ -1,7 +1,7 @@
 const { UserModel } = require(`${ global.paths.v1.mongooseModels }`);
 const sendVerificationEmail = require(`${ global.paths.tools.nodemailer }`);
 const { DUPLICATE_ERR } = require(`${ global.paths.tools.mongoErrors }`);
-const { INTERNAL_ERR, CONFILICT_ERR, SUCCESS_MSG } = require(`${ global.paths.tools.statusCodes }`);
+const { INTERNAL_ERR, CONFILICT_ERR, SUCCESS_CREATE_MSG } = require(`${ global.paths.tools.statusCodes }`);
 
 const post = async(req, res) => {
 
@@ -33,7 +33,7 @@ const post = async(req, res) => {
         return res.responser(INTERNAL_ERR, "internal server error");
     }
 
-    return res.responser(SUCCESS_MSG, "user created successfully");
+    return res.responser(SUCCESS_CREATE_MSG, "user created successfully");
 };
 
 module.exports = post;
