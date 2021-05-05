@@ -26,6 +26,7 @@ const env = {
 const paths = {
     middlewares: {
         responser: path.resolve("./api/middlewares/responser"),
+        tokenUnpacker: path.resolve("./api/middlewares/tokenUnpacker"),
     },
     tools: {
         mongooseConnector: path.resolve("./api/tools/mongooseConnector"),
@@ -41,6 +42,7 @@ const paths = {
         controllers: {
             register: path.resolve("./api/v1/controllers/usersManagement/register"),
             resendVerificationMail: path.resolve("./api/v1/controllers/usersManagement/resendVerificationMail"),
+            verifyEmail: path.resolve("./api/v1/controllers/usersManagement/verifyEmail"),
         },
         validators: {
             register: path.resolve("./api/v1/validators/usersManagement/register"),
@@ -49,6 +51,7 @@ const paths = {
         routes: {
             register: path.resolve("./api/v1/routes/usersManagement/register"),
             resendVerificationMail: path.resolve("./api/v1/routes/usersManagement/resendVerificationMail"),
+            verifyEmail: path.resolve("./api/v1/routes/usersManagement/verifyEmail"),
         },
     },
 };
