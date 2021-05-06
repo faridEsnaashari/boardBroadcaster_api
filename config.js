@@ -43,15 +43,18 @@ const paths = {
             register: path.resolve("./api/v1/controllers/usersManagement/register"),
             resendVerificationMail: path.resolve("./api/v1/controllers/usersManagement/resendVerificationMail"),
             verifyEmail: path.resolve("./api/v1/controllers/usersManagement/verifyEmail"),
+            login: path.resolve("./api/v1/controllers/usersManagement/login"),
         },
         validators: {
             register: path.resolve("./api/v1/validators/usersManagement/register"),
             resendVerificationMail: path.resolve("./api/v1/validators/usersManagement/resendVerificationMail"),
+            login: path.resolve("./api/v1/validators/usersManagement/login"),
         },
         routes: {
             register: path.resolve("./api/v1/routes/usersManagement/register"),
             resendVerificationMail: path.resolve("./api/v1/routes/usersManagement/resendVerificationMail"),
             verifyEmail: path.resolve("./api/v1/routes/usersManagement/verifyEmail"),
+            login: path.resolve("./api/v1/routes/usersManagement/login"),
         },
     },
 };
