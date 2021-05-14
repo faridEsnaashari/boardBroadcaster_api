@@ -57,7 +57,20 @@ const getVerificationToken = function(payload){
     return tokenPromise;
 };
 
-const encryptPassword = function(next){
+const checkPassword = function(password){
+    const secretKey = global.env.SECRET_KEYS.AES_SECRET_KEY;
+
+    const passwordBytes = AES.decrypt(this.password, secretKey);
+    const storedPassword = passwordBytes.toString(CryptoJS.enc.Utf8)
+
+    return storedPassword === password;
+};
+
+const encryptPassword = function (next) {
+    if(!this.isModified("password")){
+        return next();
+    }
+
     const secretKey = global.env.SECRET_KEYS.AES_SECRET_KEY;
     const originPassword = this.password;
     const hashedPassword = AES.encrypt(originPassword, secretKey).toString();
@@ -69,6 +82,7 @@ const encryptPassword = function(next){
 
 UserSchema.methods.addVerificationCode = addVerificationCode;
 UserSchema.methods.getVerificationToken = getVerificationToken;
+UserSchema.methods.checkPassword = checkPassword;
 
 UserSchema.pre("save", encryptPassword);
 
