@@ -1,9 +1,6 @@
 const mongoose = require("mongoose");
 const types = mongoose.Schema.Types;
-const CryptoJS = require("crypto-js");
-const AES = CryptoJS.AES;
-const jwt = require("jsonwebtoken");
-const generateRandomVerificationCode = require(`${ global.paths.tools.rendomVerificationCodeGenerator }`);
+const { generateRandomVerificationCode, encryptAES, decryptAES, createJWT } = require(`${ global.paths.tools.helper }`);
 
 const nameDetails = {
     type: String,
@@ -44,26 +41,11 @@ const addVerificationCode = function(){
 };
 
 const getVerificationToken = function(payload){
-    const secretKey = global.env.SECRET_KEYS.JWT_SECRET_KEY;
-    const tokenPromise = new Promise((resolve, reject) => {
-        jwt.sign(payload, secretKey, (err, token) => {
-            if(err){
-                reject(err);
-            }
-            resolve(token);
-        });
-    });
-
-    return tokenPromise;
+    return createJWT(payload);
 };
 
 const checkPassword = function(password){
-    const secretKey = global.env.SECRET_KEYS.AES_SECRET_KEY;
-
-    const passwordBytes = AES.decrypt(this.password, secretKey);
-    const storedPassword = passwordBytes.toString(CryptoJS.enc.Utf8)
-
-    return storedPassword === password;
+    return decryptAES(this.password) === password;
 };
 
 const encryptPassword = function (next) {
@@ -71,11 +53,7 @@ const encryptPassword = function (next) {
         return next();
     }
 
-    const secretKey = global.env.SECRET_KEYS.AES_SECRET_KEY;
-    const originPassword = this.password;
-    const hashedPassword = AES.encrypt(originPassword, secretKey).toString();
-
-    this.password = hashedPassword;
+    this.password = encryptAES(this.password);
 
     next();
 };
