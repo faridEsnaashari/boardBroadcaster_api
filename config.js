@@ -30,7 +30,7 @@ const paths = {
     },
     tools: {
         mongooseConnector: path.resolve("./api/tools/mongooseConnector"),
-        rendomVerificationCodeGenerator: path.resolve("./api/tools/randomVerifationCodeGenerator"),
+        helper: path.resolve("./api/tools/helper"),
         validationTools: path.resolve("./api/tools/validationTools"),
         nodemailer: path.resolve("./api/tools/nodeMailer"),
         statusCodes: path.resolve("./api/tools/statusCodes"),

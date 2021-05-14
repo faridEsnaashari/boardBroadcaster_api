@@ -8,4 +8,6 @@ const generateRandomVerificationCode = digit =>  {
     return Math.floor(Math.floor(digitA + Math.random() * digitB)) + 1;
 };
 
-module.exports = generateRandomVerificationCode;
+module.exports = {
+    generateRandomVerificationCode,
+};
