@@ -49,6 +49,7 @@ const paths = {
             register: path.resolve("./api/v1/validators/usersManagement/register"),
             resendVerificationMail: path.resolve("./api/v1/validators/usersManagement/resendVerificationMail"),
             login: path.resolve("./api/v1/validators/usersManagement/login"),
+            isAuthorized: path.resolve("./api/v1/validators/isAuthorized"),
         },
         routes: {
             register: path.resolve("./api/v1/routes/usersManagement/register"),
