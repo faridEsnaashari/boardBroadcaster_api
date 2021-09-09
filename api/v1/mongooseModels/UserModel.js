@@ -28,10 +28,16 @@ const passwordDetails = {
     required: true,
 };
 
+const boardsDetails = {
+    type: types.ObjectId,
+    ref: "boards",
+};
+
 const UserSchema = mongoose.Schema({
     name: nameDetails,
     email: emailDetails,
     password: passwordDetails,
+    boards: boardsDetails,
     verificationCode: verificationCodeDetails,
     verified: verifiedDetails,
 });
