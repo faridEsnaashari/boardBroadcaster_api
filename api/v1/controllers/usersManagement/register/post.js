@@ -19,7 +19,7 @@ const post = async(req, res) => {
         console.error(err);
 
         if(err.code === DUPLICATE_ERR){
-            return res.responser(CONFILICT_ERR, "this email is already exists", { field: "email" });
+            return res.responser(CONFILICT_ERR, "this email is already exists", null, { field: "email" });
         }
 
         return res.responser(INTERNAL_ERR, "internal server error");

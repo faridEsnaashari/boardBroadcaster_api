@@ -5,11 +5,11 @@ const getValidator = (req, res, next) => {
     const { email } = req.query;
 
     if(IsUndefinedOrNull(email)){
-        return res.responser(VALIDATION_ERR, "undefined field", { field: "email" });
+        return res.responser(VALIDATION_ERR, "undefined field", null, { field: "email" });
     }
 
     if(!IsValidEmail(email)){
-        return res.responser(VALIDATION_ERR, "wrong format", { field: "email" });
+        return res.responser(VALIDATION_ERR, "wrong format", null, { field: "email" });
     }
 
     next();
