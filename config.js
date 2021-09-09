@@ -44,6 +44,7 @@ const paths = {
             resendVerificationMail: path.resolve("./api/v1/controllers/usersManagement/resendVerificationMail"),
             verifyEmail: path.resolve("./api/v1/controllers/usersManagement/verifyEmail"),
             login: path.resolve("./api/v1/controllers/usersManagement/login"),
+            user: path.resolve("./api/v1/controllers/usersManagement/user"),
         },
         validators: {
             register: path.resolve("./api/v1/validators/usersManagement/register"),
@@ -56,6 +57,7 @@ const paths = {
             resendVerificationMail: path.resolve("./api/v1/routes/usersManagement/resendVerificationMail"),
             verifyEmail: path.resolve("./api/v1/routes/usersManagement/verifyEmail"),
             login: path.resolve("./api/v1/routes/usersManagement/login"),
+            user: path.resolve("./api/v1/routes/usersManagement/user"),
         },
     },
 };
