@@ -10,7 +10,7 @@ const nameDetails = {
 
 const ownerDetails = {
     type: types.ObjectId,
-    //require: true,
+    require: true,
     ref: "users",
 };
 
