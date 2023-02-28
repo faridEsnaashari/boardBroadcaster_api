@@ -41,6 +41,7 @@ const paths = {
         mongooseModels: path.resolve("./api/v1/mongooseModels/models"),
         controllers: {
             register: path.resolve("./api/v1/controllers/usersManagement/register"),
+            board: path.resolve("./api/v1/controllers/board"),
             resendVerificationMail: path.resolve("./api/v1/controllers/usersManagement/resendVerificationMail"),
             verifyEmail: path.resolve("./api/v1/controllers/usersManagement/verifyEmail"),
             login: path.resolve("./api/v1/controllers/usersManagement/login"),
@@ -48,12 +49,14 @@ const paths = {
         },
         validators: {
             register: path.resolve("./api/v1/validators/usersManagement/register"),
+            board: path.resolve("./api/v1/validators/board"),
             resendVerificationMail: path.resolve("./api/v1/validators/usersManagement/resendVerificationMail"),
             login: path.resolve("./api/v1/validators/usersManagement/login"),
             isAuthorized: path.resolve("./api/v1/validators/isAuthorized"),
         },
         routes: {
             register: path.resolve("./api/v1/routes/usersManagement/register"),
+            board: path.resolve("./api/v1/routes/board"),
             resendVerificationMail: path.resolve("./api/v1/routes/usersManagement/resendVerificationMail"),
             verifyEmail: path.resolve("./api/v1/routes/usersManagement/verifyEmail"),
             login: path.resolve("./api/v1/routes/usersManagement/login"),

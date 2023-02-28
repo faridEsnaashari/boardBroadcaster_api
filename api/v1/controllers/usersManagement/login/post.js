@@ -19,7 +19,7 @@ const postController = async(req, res) => {
             return res.responser(UNAUTHORIZED_ERR, "email or password is incurrect");
         }
 
-        const payload = { name: user.name, email: user.email };
+        const payload = { name: user.name, email: user.email, id: user.id };
         const token = await createJWT(payload);
 
         return res.responser(SUCCESS_MSG, "user loged in successfully", { userToken: token });
