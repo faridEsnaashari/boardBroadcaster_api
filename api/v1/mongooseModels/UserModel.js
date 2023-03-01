@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const types = mongoose.Schema.Types;
 const { generateRandomVerificationCode, encryptAES, decryptAES, createJWT } = require(`${ global.paths.tools.helper }`);
+const BoardModel = require("./BoardModel");
 
 const nameDetails = {
     type: String,
@@ -28,19 +29,26 @@ const passwordDetails = {
     required: true,
 };
 
-const boardsDetails = {
-    type: types.ObjectId,
-    ref: "boards",
-};
-
 const UserSchema = mongoose.Schema({
     name: nameDetails,
     email: emailDetails,
     password: passwordDetails,
-    boards: boardsDetails,
     verificationCode: verificationCodeDetails,
     verified: verifiedDetails,
 });
+
+const findByIdWithBoards = async function(id, options){
+    const user = await this.findById(id, options);
+    if(!user){
+        return null;
+    }
+
+    const boards = await BoardModel.find({ owner: id });
+
+    user.boards = boards;
+    return { ...user.toObject(), boards };
+
+};
 
 const addVerificationCode = function(){
     this.verificationCode = generateRandomVerificationCode(6);
@@ -67,6 +75,8 @@ const encryptPassword = function (next) {
 UserSchema.methods.addVerificationCode = addVerificationCode;
 UserSchema.methods.getVerificationToken = getVerificationToken;
 UserSchema.methods.checkPassword = checkPassword;
+
+UserSchema.statics.findByIdWithBoards = findByIdWithBoards;
 
 UserSchema.pre("save", encryptPassword);
 
