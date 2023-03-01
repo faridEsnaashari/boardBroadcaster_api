@@ -1,5 +1,6 @@
 const { UNAUTHORIZED_ERR } = require(`${ global.paths.tools.statusCodes }`);
 const { unpackJWT } = require(`${ global.paths.tools.helper }`);
+const { UserModel } = require(`${ global.paths.v1.mongooseModels }`);
 
 const isAuthorized = async(req, res, next) => {
     const userToken = req.headers.authorization;
@@ -13,13 +14,29 @@ const isAuthorized = async(req, res, next) => {
         );
     }
 
+    let user = null;
+
     try{
-        const user = await unpackJWT(userToken);
-        req.authorization = { user };
+        user = await unpackJWT(userToken);
+    }
+    catch(err){
+        console.error(err);
+        return res.responser(UNAUTHORIZED_ERR, "Authorization token is invalid");
+    }
+
+    try{
+        const userObject = await UserModel.findById(user.id);
+        if(!userObject){
+            throw new Error;
+        }
+
+        req.authorization = { user: userObject };
+
         next();
     }
     catch(err){
-        return res.responser(UNAUTHORIZED_ERR, "Authorization token is invalid");
+        console.error(err);
+        return res.responser(UNAUTHORIZED_ERR, "user is invalid");
     }
 }
 
