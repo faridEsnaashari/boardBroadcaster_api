@@ -2,19 +2,9 @@ const { BoardModel, UserModel } = require(`${ global.paths.v1.mongooseModels }`)
 const { NOTFOUND_ERR, INTERNAL_ERR, SUCCESS_CREATE_MSG } = require(`${ global.paths.tools.statusCodes }`);
 
 const post = async(req, res) => {
-    const requestedUserId = req.authorization.user.id;
     const { name } = req.body;
 
-    let user = null;
-
-    try{
-        user = await UserModel.findOne({ _id: requestedUserId }, { verificationCode: 0, verified: 0, password: 0 });
-    }
-    catch(err){
-        console.error(err);
-
-        return res.responser(NOTFOUND_ERR, "user not found");
-    }
+    const user = req.authorization.user;
 
     const newBoard = new BoardModel({
         name,
@@ -23,8 +13,9 @@ const post = async(req, res) => {
 
     try{
         const board = await newBoard.save();
+        const { verificationCode, verified, password, ...owner } = board.owner.toObject();
 
-        res.responser(SUCCESS_CREATE_MSG, "board has been created successfully", board);
+        res.responser(SUCCESS_CREATE_MSG, "board has been created successfully", { ...board.toObject(), owner });
     }
     catch(err){
         console.error(err);
