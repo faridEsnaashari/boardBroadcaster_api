@@ -15,7 +15,7 @@ const isAuthorized = require(`${ global.paths.v1.validators.isAuthorized }`);
 
 router.post("/", isAuthorized, postValidator, postController);
 router.put("/", isAuthorized, putValidator, putController);
-router.delete("/", isAuthorized, deleteValidator, deleteController);
+router.delete("/:id", isAuthorized, deleteValidator, deleteController);
 router.get("/:id", isAuthorized, getValidator, getController);
 
 module.exports = router;
