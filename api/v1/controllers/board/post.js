@@ -2,12 +2,13 @@ const { BoardModel, UserModel } = require(`${ global.paths.v1.mongooseModels }`)
 const { NOTFOUND_ERR, INTERNAL_ERR, SUCCESS_CREATE_MSG } = require(`${ global.paths.tools.statusCodes }`);
 
 const post = async(req, res) => {
-    const { name } = req.body;
+    const { name, color } = req.body;
 
     const user = req.authorization.user;
 
     const newBoard = new BoardModel({
         name,
+        color,
         owner: user,
     });
 

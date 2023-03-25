@@ -18,10 +18,16 @@ const boardIdentifierDetails = {
     type: String,
 };
 
+const colorDetails = {
+    type: String,
+    require: true,
+};
+
 const BoardSchema = mongoose.Schema({
     name: nameDetails,
     owner: ownerDetails,
     boardIdentifier: boardIdentifierDetails,
+    color: colorDetails,
 });
 
 const insertBoardIdentifier = function(next){

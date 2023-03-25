@@ -2,7 +2,7 @@ const { BoardModel } = require(`${ global.paths.v1.mongooseModels }`);
 const { NOTFOUND_ERR, INTERNAL_ERR, SUCCESS_MSG } = require(`${ global.paths.tools.statusCodes }`);
 
 const deleteController = async(req, res) => {
-    const { id: _id } = req.body;
+    const { id: _id } = req.params;
 
     try{
         const deletedBoard = await BoardModel.findOneAndDelete({ _id });
