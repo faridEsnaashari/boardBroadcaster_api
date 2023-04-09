@@ -14,7 +14,7 @@ const getValidator = require(`${ global.paths.v1.validators.board }/get`);
 const isAuthorized = require(`${ global.paths.v1.validators.isAuthorized }`);
 
 router.post("/", isAuthorized, postValidator, postController);
-router.put("/", isAuthorized, putValidator, putController);
+router.put("/:id", isAuthorized, putValidator, putController);
 router.delete("/:id", isAuthorized, deleteValidator, deleteController);
 router.get("/:id", isAuthorized, getValidator, getController);
 
