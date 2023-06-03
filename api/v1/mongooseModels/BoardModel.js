@@ -35,7 +35,8 @@ const insertBoardIdentifier = function(next){
         return next();
     }
 
-    this.boardIdentifier = encryptAES(this.id);
+    const boardEncryptedId = encryptAES(this.id);
+    this.boardIdentifier = btoa(boardEncryptedId);
     next();
 }
 
