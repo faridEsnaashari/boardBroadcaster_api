@@ -21,6 +21,11 @@ const env = {
         GMAIL_ID: process.env.GMAIL_ID,
         GMAIL_PASSWORD: process.env.GMAIL_PASSWORD,
     },
+    SOCKET: {
+        CORS: {
+            ORIGIN: process.env.SOCKET_CORS_ORIGIN,
+        },
+    },
 };
 
 const paths = {
