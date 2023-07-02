@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
-const types = mongoose.Schema.Types;
+const { nanoid } = require("nanoid/non-secure");
 
-const { encryptAES } = require(`${ global.paths.tools.helper }`);
+const types = mongoose.Schema.Types;
 
 const nameDetails = {
     type: String,
@@ -35,8 +35,7 @@ const insertBoardIdentifier = function(next){
         return next();
     }
 
-    const boardEncryptedId = encryptAES(this.id);
-    this.boardIdentifier = btoa(boardEncryptedId);
+    this.boardIdentifier = nanoid();
     next();
 }
 
