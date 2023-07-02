@@ -10,6 +10,7 @@ const Socket = class {
             socket.on("joinToRoom", boardIdentifier => this.#joinToRoom(socket, boardIdentifier));
             socket.on("draw", (shape, boardIdentifier) => this.#sendShape(shape, boardIdentifier));
             socket.on("allShapes", (shapes, boardIdentifier) => this.#initShapes(shapes, boardIdentifier));
+            socket.on("deleteShape", (shape, boardIdentifier) => this.#deleteShape(shape, boardIdentifier));
         });
     }
 
@@ -27,6 +28,10 @@ const Socket = class {
 
     #sendShape(shape, boardIdentifier){
         this.#_socketIo.to(boardIdentifier).emit("newShape", shape);
+    }
+
+    #deleteShape(shape, boardIdentifier){
+        this.#_socketIo.to(boardIdentifier).emit("deleteShape", shape);
     }
 
     #initShapes(shapes, boardIdentifier){
