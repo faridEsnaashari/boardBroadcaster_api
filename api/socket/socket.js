@@ -8,9 +8,9 @@ const Socket = class {
 
         this.#_socketIo.on("connection", socket => {
             socket.on("joinToRoom", boardIdentifier => this.#joinToRoom(socket, boardIdentifier));
-            socket.on("draw", (shape, boardIdentifier) => this.#sendShape(shape, boardIdentifier));
-            socket.on("allShapes", (shapes, boardIdentifier) => this.#initShapes(shapes, boardIdentifier));
-            socket.on("deleteShape", (shape, boardIdentifier) => this.#deleteShape(shape, boardIdentifier));
+            socket.on("draw", shape => this.#sendShape(socket, shape));
+            socket.on("allShapes", shapes => this.#initShapes(socket, shapes));
+            socket.on("deleteShape", shape => this.#deleteShape(socket, shape));
         });
     }
 
@@ -26,16 +26,24 @@ const Socket = class {
         socketsInTheRoom[0].emit("getAllShapes");
     }
 
-    #sendShape(shape, boardIdentifier){
-        this.#_socketIo.to(boardIdentifier).emit("newShape", shape);
+    #sendShape(socket, shape){
+        const room = this.#getRoom(socket);
+        this.#_socketIo.to(room).emit("newShape", shape);
     }
 
-    #deleteShape(shape, boardIdentifier){
-        this.#_socketIo.to(boardIdentifier).emit("deleteShape", shape);
+    #deleteShape(socket, shape){
+        const room = this.#getRoom(socket);
+        this.#_socketIo.to(room).emit("deleteShape", shape);
     }
 
-    #initShapes(shapes, boardIdentifier){
-        this.#_socketIo.to(boardIdentifier).emit("initShapes", shapes);
+    #initShapes(socket, shapes){
+        const room = this.#getRoom(socket);
+        this.#_socketIo.to(room).emit("initShapes", shapes);
+    }
+
+    #getRoom(socket){
+        const [, room] = socket.rooms;
+        return room;
     }
 };
 
