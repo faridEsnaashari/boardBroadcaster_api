@@ -7,6 +7,7 @@ const cors = require("cors")
 const bodyParser = require("body-parser");
 const responser = require(`${ global.paths.middlewares.responser }`);
 const mongooseConnector = require(`${ global.paths.tools.mongooseConnector }`);
+const redisConnector = require(`${ global.paths.tools.redisConnector }`).connect();
 
 const v1 = require(`${ global.paths.v1.path }`);
 
