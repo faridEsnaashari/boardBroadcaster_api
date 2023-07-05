@@ -26,6 +26,9 @@ const env = {
             ORIGIN: process.env.SOCKET_CORS_ORIGIN,
         },
     },
+    REDIS: {
+        CONNECTION_CONFIG: process.env.REDIS_CONNECTION_CONFIG,
+    },
 };
 
 const paths = {
@@ -40,10 +43,14 @@ const paths = {
         nodemailer: path.resolve("./api/tools/nodeMailer"),
         statusCodes: path.resolve("./api/tools/statusCodes"),
         mongoErrors: path.resolve("./api/tools/mongoErrors"),
+        redisConnector: path.resolve("./api/tools/redisConnector"),
     },
     v1: {
         path: path.resolve("./api/v1/v1"),
         mongooseModels: path.resolve("./api/v1/mongooseModels/models"),
+        redisModels: {
+            shapeModel: path.resolve("./api/v1/redisModels/ShapesModel"),
+        },
         controllers: {
             register: path.resolve("./api/v1/controllers/usersManagement/register"),
             board: path.resolve("./api/v1/controllers/board"),
