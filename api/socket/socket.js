@@ -1,4 +1,5 @@
 const { Server: SocketIo } = require("socket.io");
+const ShapeRedisModel = require(`${ global.paths.v1.redisModels.shapeModel }`);
 
 const Socket = class {
     #_socketIo = null;
@@ -9,35 +10,35 @@ const Socket = class {
         this.#_socketIo.on("connection", socket => {
             socket.on("joinToRoom", boardIdentifier => this.#joinToRoom(socket, boardIdentifier));
             socket.on("draw", shape => this.#sendShape(socket, shape));
-            socket.on("allShapes", shapes => this.#initShapes(socket, shapes));
-            socket.on("deleteShape", shape => this.#deleteShape(socket, shape));
+            socket.on("deleteShape", shape => this.#deleteAShape(socket, shape));
+            socket.on("deleteAllShapes", shapes => this.#deleteAllShapes(socket, shapes));
         });
     }
 
     async #joinToRoom(socket, boardIdentifier){
         socket.join(boardIdentifier);
 
-        const socketsInTheRoom = await this.#_socketIo.in(boardIdentifier).fetchSockets();
-
-        if(socketsInTheRoom.length <= 1){
-            return;
+        const shapes = await ShapeRedisModel.getRoomsShapes(boardIdentifier);
+        if(shapes){
+            socket.emit("initShapes", shapes);
         }
-
-        socketsInTheRoom[0].emit("getAllShapes");
     }
 
     #sendShape(socket, shape){
         const room = this.#getRoom(socket);
+        ShapeRedisModel.addOrModifyShape(shape, room);
         this.#_socketIo.to(room).emit("newShape", shape);
     }
 
-    #deleteShape(socket, shape){
+    #deleteAShape(socket, shape){
         const room = this.#getRoom(socket);
+        ShapeRedisModel.deleteAShapeOfRoom(room, shape)
         this.#_socketIo.to(room).emit("deleteShape", shape);
     }
 
-    #initShapes(socket, shapes){
+    #deleteAllShapes(socket, shapes){
         const room = this.#getRoom(socket);
+        ShapeRedisModel.deleteAllShapesOfRoom(room, shapes)
         this.#_socketIo.to(room).emit("initShapes", shapes);
     }
 
