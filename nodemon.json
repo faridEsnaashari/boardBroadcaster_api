@@ -1,0 +1,5 @@
+{
+  "ext": ".ts,.js",
+  "ignore": [],
+  "exec": "npm run lint & node server.js"
+}
