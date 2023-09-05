@@ -4,8 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon server.js"
+    "lint": "eslint . --ext .js",
+    "format": "prettier --write .",
+    "format:api": "prettier --write api",
+    "start:dev": "NODE_ENV=developement nodemon",
+    "start:production": "npm run build && NODE_ENV=production node ./dist/server.js",
+    "build": "rimraf ./dist && tsc"
   },
   "author": "",
   "license": "ISC",
@@ -20,8 +24,16 @@
     "mongoose": "^5.12.3",
     "nanoid": "^3.3.4",
     "nodemailer": "^6.6.0",
-    "nodemon": "^2.0.7",
     "redis": "^4.6.7",
     "socket.io": "^4.6.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.22.15",
+    "@babel/eslint-parser": "^7.22.15",
+    "eslint": "^8.48.0",
+    "eslint-config-prettier": "^9.0.0",
+    "nodemon": "^2.0.7",
+    "prettier": "^3.0.2",
+    "rimraf": "^5.0.1"
   }
 }
