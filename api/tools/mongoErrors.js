@@ -1,3 +1,3 @@
 module.exports = {
-    DUPLICATE_ERR: 11000,
+  DUPLICATE_ERR: 11000,
 };

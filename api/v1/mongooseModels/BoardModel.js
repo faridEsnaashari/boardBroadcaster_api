@@ -4,40 +4,40 @@ const { nanoid } = require("nanoid/non-secure");
 const types = mongoose.Schema.Types;
 
 const nameDetails = {
-    type: String,
-    require: true,
+  type: String,
+  require: true,
 };
 
 const ownerDetails = {
-    type: types.ObjectId,
-    require: true,
-    ref: "users",
+  type: types.ObjectId,
+  require: true,
+  ref: "users",
 };
 
 const boardIdentifierDetails = {
-    type: String,
+  type: String,
 };
 
 const colorDetails = {
-    type: String,
-    require: true,
+  type: String,
+  require: true,
 };
 
 const BoardSchema = mongoose.Schema({
-    name: nameDetails,
-    owner: ownerDetails,
-    boardIdentifier: boardIdentifierDetails,
-    color: colorDetails,
+  name: nameDetails,
+  owner: ownerDetails,
+  boardIdentifier: boardIdentifierDetails,
+  color: colorDetails,
 });
 
-const insertBoardIdentifier = function(next){
-    if(!this.isNew){
-        return next();
-    }
+const insertBoardIdentifier = function (next) {
+  if (!this.isNew) {
+    return next();
+  }
 
-    this.boardIdentifier = nanoid();
-    next();
-}
+  this.boardIdentifier = nanoid();
+  next();
+};
 
 BoardSchema.pre("save", insertBoardIdentifier);
 

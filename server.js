@@ -5,9 +5,11 @@ const Socket = require("./api/socket/socket");
 const server = http.createServer(app);
 
 const socketIo = new Socket(server, {
-    cors: {
-        origin: global.env.SOCKET.CORS.ORIGIN,
-    }
+  cors: {
+    origin: global.env.SOCKET.CORS.ORIGIN,
+  },
 });
 
-server.listen(global.env.GENERAL.SERVER_PORT, () => console.log(`listen on port ${ global.env.GENERAL.SERVER_PORT }`));
+server.listen(global.env.GENERAL.SERVER_PORT, () =>
+  console.log(`listen on port ${global.env.GENERAL.SERVER_PORT}`),
+);

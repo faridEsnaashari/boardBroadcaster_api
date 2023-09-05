@@ -1,22 +1,23 @@
-const nodemailer = require('nodemailer');
+const nodemailer = require("nodemailer");
 
 const transporter = nodemailer.createTransport({
-    host: "smtp.gmail.com",
-    auth: {
-        user: global.env.GMAIL.GMAIL_ID,
-        pass: global.env.GMAIL.GMAIL_PASSWORD,
-    },
+  host: "smtp.gmail.com",
+  auth: {
+    user: global.env.GMAIL.GMAIL_ID,
+    pass: global.env.GMAIL.GMAIL_PASSWORD,
+  },
 });
 
-const sendVerificationEmail = (email, verificationUrl, username) => transporter.sendMail({
+const sendVerificationEmail = (email, verificationUrl, username) =>
+  transporter.sendMail({
     from: global.env.GMAIL.GMAIL_ID,
     to: email,
     subject: "Verification Mail",
     html: createVerificationEmailTemplate(verificationUrl, username),
-});
+  });
 
 const createVerificationEmailTemplate = (buttonUrl, username) => {
-    return `
+  return `
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -96,7 +97,7 @@ padding:5px 30px 5px 30px!important;
 <td align="left" style="padding:0;Margin:0;padding-bottom:5px"><h2 style="Margin:0;line-height:120%;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-size:1.5em;font-style:normal;font-weight:normal;color:#11D000">Verify your email</h2></td>
 </tr>
 <tr>
-<td class="es-m-txt-c" align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:150%;color:#837C7C;font-size:1.2em"><br><br>Dear ${ username }<br><br>Hi.<br>Please verify your email by simply click on below button.<br><br><br></p></td>
+<td class="es-m-txt-c" align="left" style="padding:0;Margin:0"><p style="Margin:0;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;font-family:arial, 'helvetica neue', helvetica, sans-serif;line-height:150%;color:#837C7C;font-size:1.2em"><br><br>Dear ${username}<br><br>Hi.<br>Please verify your email by simply click on below button.<br><br><br></p></td>
 </tr>
 </table></td>
 </tr>
@@ -116,7 +117,7 @@ padding:5px 30px 5px 30px!important;
 <td valign="top" align="center" style="padding:0;Margin:0;width:560px">
 <table width="100%" cellspacing="0" cellpadding="0" role="presentation" style="mso-table-lspace:0pt;mso-table-rspace:0pt;border-collapse:collapse;border-spacing:0px">
 <tr>
-<td align="center" style="padding:0;Margin:0;padding-bottom:10px"><span class="es-button-border" style="border-style:solid;border-color:#808080;background:#BEFB1C none repeat scroll 0% 0%;border-width:2px;display:inline-block;border-radius:19px;width:auto"><a href="${ buttonUrl }" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none !important;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#4B4848;font-size:16px;border-style:solid;border-color:#BEFB1C;border-width:5px 30px 5px 30px;display:inline-block;background:#BEFB1C none repeat scroll 0% 0%;border-radius:19px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center;border-left-width:30px;border-right-width:30px">Verify</a></span></td>
+<td align="center" style="padding:0;Margin:0;padding-bottom:10px"><span class="es-button-border" style="border-style:solid;border-color:#808080;background:#BEFB1C none repeat scroll 0% 0%;border-width:2px;display:inline-block;border-radius:19px;width:auto"><a href="${buttonUrl}" class="es-button" target="_blank" style="mso-style-priority:100 !important;text-decoration:none !important;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;mso-line-height-rule:exactly;color:#4B4848;font-size:16px;border-style:solid;border-color:#BEFB1C;border-width:5px 30px 5px 30px;display:inline-block;background:#BEFB1C none repeat scroll 0% 0%;border-radius:19px;font-family:arial, 'helvetica neue', helvetica, sans-serif;font-weight:normal;font-style:normal;line-height:19px;width:auto;text-align:center;border-left-width:30px;border-right-width:30px">Verify</a></span></td>
 </tr>
 </table></td>
 </tr>
@@ -189,7 +190,7 @@ cellspacing="0"><tr><td style="width:270px" valign="top"><![endif]-->
 </div>
 </body>
 </html>
-    `
+    `;
 };
 
 module.exports = sendVerificationEmail;
