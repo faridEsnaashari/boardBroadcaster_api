@@ -1,6 +1,6 @@
 const { UserModel } = require(`${global.paths.v1.mongooseModels}`);
-const { INTERNAL_ERR, CONFILICT_ERR, SUCCESS_MSG, NOTFOUND_ERR } = require(
-  `${global.paths.tools.statusCodes}`,
+const { INTERNAL_ERR, SUCCESS_MSG, NOTFOUND_ERR } = require(
+  `${global.paths.tools.statusCodes}`
 );
 const sendVerificationEmail = require(`${global.paths.tools.nodemailer}`);
 
@@ -21,7 +21,7 @@ const get = async (req, res) => {
     await sendVerificationEmail(
       user.email,
       `${global.env.GENERAL.APP_URL}/signup/verify_email/${token}`,
-      user.name,
+      user.name
     );
 
     return res.responser(SUCCESS_MSG, "email sent successfully");

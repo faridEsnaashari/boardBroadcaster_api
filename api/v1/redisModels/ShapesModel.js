@@ -10,7 +10,7 @@ const addOrModifyShape = async (shape, room) => {
 
     let shapeWasExists = false;
 
-    updatedShapes = JSON.parse(shapes).map((storedShape) => {
+    const updatedShapes = JSON.parse(shapes).map((storedShape) => {
       if (!(storedShape.name === shape.name)) {
         return storedShape;
       }
@@ -21,9 +21,7 @@ const addOrModifyShape = async (shape, room) => {
 
     await redisClient.set(
       room,
-      JSON.stringify(
-        shapeWasExists ? updatedShapes : [...updatedShapes, shape],
-      ),
+      JSON.stringify(shapeWasExists ? updatedShapes : [...updatedShapes, shape])
     );
   } catch (err) {
     console.error(err);
@@ -32,7 +30,7 @@ const addOrModifyShape = async (shape, room) => {
 
 const getRoomsShapes = async (room) => {
   try {
-    shapes = await redisClient.get(room);
+    const shapes = await redisClient.get(room);
     return JSON.parse(shapes);
   } catch (err) {
     console.error(err);
@@ -48,7 +46,7 @@ const deleteAShapeOfRoom = async (room, shape) => {
     }
 
     const updatedShapes = JSON.parse(shapes).map((storedShape) =>
-      storedShape.name === shape.name ? shape : storedShape,
+      storedShape.name === shape.name ? shape : storedShape
     );
 
     await redisClient.set(room, JSON.stringify(updatedShapes));

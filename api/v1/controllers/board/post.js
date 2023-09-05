@@ -1,6 +1,6 @@
-const { BoardModel, UserModel } = require(`${global.paths.v1.mongooseModels}`);
-const { NOTFOUND_ERR, INTERNAL_ERR, SUCCESS_CREATE_MSG } = require(
-  `${global.paths.tools.statusCodes}`,
+const { BoardModel } = require(`${global.paths.v1.mongooseModels}`);
+const { INTERNAL_ERR, SUCCESS_CREATE_MSG } = require(
+  `${global.paths.tools.statusCodes}`
 );
 
 const post = async (req, res) => {

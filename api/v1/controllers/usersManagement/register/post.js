@@ -2,7 +2,7 @@ const { UserModel } = require(`${global.paths.v1.mongooseModels}`);
 const sendVerificationEmail = require(`${global.paths.tools.nodemailer}`);
 const { DUPLICATE_ERR } = require(`${global.paths.tools.mongoErrors}`);
 const { INTERNAL_ERR, CONFILICT_ERR, SUCCESS_CREATE_MSG } = require(
-  `${global.paths.tools.statusCodes}`,
+  `${global.paths.tools.statusCodes}`
 );
 
 const post = async (req, res) => {
@@ -17,7 +17,7 @@ const post = async (req, res) => {
   });
 
   try {
-    const saveResult = await user.save();
+    await user.save();
   } catch (err) {
     console.error(err);
 
@@ -26,7 +26,7 @@ const post = async (req, res) => {
         CONFILICT_ERR,
         "this email is already exists",
         null,
-        { field: "email" },
+        { field: "email" }
       );
     }
 
@@ -37,7 +37,7 @@ const post = async (req, res) => {
     await sendVerificationEmail(
       email,
       `${global.env.GENERAL.APP_URL}/signup/verify_email/${token}`,
-      name,
+      name
     );
   } catch (err) {
     console.error(err);
