@@ -2,6 +2,13 @@ const dotenv = require("dotenv");
 const path = require("path");
 dotenv.config();
 
+dotenv.config({
+  path:
+    process.env.NODE_ENV === "production"
+      ? "./.env.production"
+      : "./.env.developement",
+});
+
 const env = {
   GENERAL: {
     ROOT_ENDPOINT: process.env.ROOT_ENDPOINT,
@@ -55,10 +62,10 @@ const paths = {
       register: path.resolve("./api/v1/controllers/usersManagement/register"),
       board: path.resolve("./api/v1/controllers/board"),
       resendVerificationMail: path.resolve(
-        "./api/v1/controllers/usersManagement/resendVerificationMail",
+        "./api/v1/controllers/usersManagement/resendVerificationMail"
       ),
       verifyEmail: path.resolve(
-        "./api/v1/controllers/usersManagement/verifyEmail",
+        "./api/v1/controllers/usersManagement/verifyEmail"
       ),
       login: path.resolve("./api/v1/controllers/usersManagement/login"),
       user: path.resolve("./api/v1/controllers/usersManagement/user"),
@@ -67,7 +74,7 @@ const paths = {
       register: path.resolve("./api/v1/validators/usersManagement/register"),
       board: path.resolve("./api/v1/validators/board"),
       resendVerificationMail: path.resolve(
-        "./api/v1/validators/usersManagement/resendVerificationMail",
+        "./api/v1/validators/usersManagement/resendVerificationMail"
       ),
       login: path.resolve("./api/v1/validators/usersManagement/login"),
       isAuthorized: path.resolve("./api/v1/validators/isAuthorized"),
@@ -76,7 +83,7 @@ const paths = {
       register: path.resolve("./api/v1/routes/usersManagement/register"),
       board: path.resolve("./api/v1/routes/board"),
       resendVerificationMail: path.resolve(
-        "./api/v1/routes/usersManagement/resendVerificationMail",
+        "./api/v1/routes/usersManagement/resendVerificationMail"
       ),
       verifyEmail: path.resolve("./api/v1/routes/usersManagement/verifyEmail"),
       login: path.resolve("./api/v1/routes/usersManagement/login"),
