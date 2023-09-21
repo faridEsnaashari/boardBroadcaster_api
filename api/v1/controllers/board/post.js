@@ -1,4 +1,4 @@
-const { BoardModel } = require(`${global.paths.v1.mongooseModels}`);
+const { BoardModel } = require(`${global.paths.mongooseModels}`);
 const { INTERNAL_ERR, SUCCESS_CREATE_MSG } = require(
   `${global.paths.tools.statusCodes}`
 );

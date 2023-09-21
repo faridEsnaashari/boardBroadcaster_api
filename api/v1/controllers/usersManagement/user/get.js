@@ -1,4 +1,4 @@
-const User = require(`${global.paths.v1.mongooseModels}`).UserModel;
+const User = require(`${global.paths.mongooseModels}`).UserModel;
 
 const { SUCCESS_MSG } = require(`${global.paths.tools.statusCodes}`);
 

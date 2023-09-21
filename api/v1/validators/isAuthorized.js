@@ -1,6 +1,6 @@
 const { UNAUTHORIZED_ERR } = require(`${global.paths.tools.statusCodes}`);
 const { unpackJWT } = require(`${global.paths.tools.helper}`);
-const { UserModel } = require(`${global.paths.v1.mongooseModels}`);
+const { UserModel } = require(`${global.paths.mongooseModels}`);
 
 const isAuthorized = async (req, res, next) => {
   const userToken = req.headers.authorization;

@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const { initiateModels } = require(`${global.paths.v1.mongooseModels}`);
+const { initiateModels } = require(`${global.paths.mongooseModels}`);
 
 const option = {
   useUnifiedTopology: true,

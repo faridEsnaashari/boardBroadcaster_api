@@ -1,7 +1,7 @@
 const { NOTFOUND_ERR, INTERNAL_ERR, SUCCESS_MSG } = require(
   `${global.paths.tools.statusCodes}`,
 );
-const { BoardModel } = require(`${global.paths.v1.mongooseModels}`);
+const { BoardModel } = require(`${global.paths.mongooseModels}`);
 
 const get = async (req, res) => {
   const { id } = req.params;

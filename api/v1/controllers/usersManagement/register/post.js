@@ -1,4 +1,4 @@
-const { UserModel } = require(`${global.paths.v1.mongooseModels}`);
+const { UserModel } = require(`${global.paths.mongooseModels}`);
 const sendVerificationEmail = require(`${global.paths.tools.nodemailer}`);
 const { DUPLICATE_ERR } = require(`${global.paths.tools.mongoErrors}`);
 const { INTERNAL_ERR, CONFILICT_ERR, SUCCESS_CREATE_MSG } = require(

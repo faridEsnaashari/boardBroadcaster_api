@@ -1,5 +1,5 @@
 const { createJWT } = require(`${global.paths.tools.helper}`);
-const { UserModel } = require(`${global.paths.v1.mongooseModels}`);
+const { UserModel } = require(`${global.paths.mongooseModels}`);
 const { INTERNAL_ERR, SUCCESS_MSG, UNAUTHORIZED_ERR } = require(
   `${global.paths.tools.statusCodes}`,
 );

@@ -1,4 +1,4 @@
-const { UserModel } = require(`${global.paths.v1.mongooseModels}`);
+const { UserModel } = require(`${global.paths.mongooseModels}`);
 const { INTERNAL_ERR, NOTFOUND_ERR, SUCCESS_MSG } = require(
   `${global.paths.tools.statusCodes}`,
 );
