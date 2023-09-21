@@ -52,9 +52,9 @@ const paths = {
     mongoErrors: path.resolve("./api/tools/mongoErrors"),
     redisConnector: path.resolve("./api/tools/redisConnector"),
   },
+  mongooseModels: path.resolve("./api/mongooseModels/models"),
   v1: {
     path: path.resolve("./api/v1/v1"),
-    mongooseModels: path.resolve("./api/v1/mongooseModels/models"),
     redisModels: {
       shapeModel: path.resolve("./api/v1/redisModels/ShapesModel"),
     },
@@ -88,6 +88,43 @@ const paths = {
       verifyEmail: path.resolve("./api/v1/routes/usersManagement/verifyEmail"),
       login: path.resolve("./api/v1/routes/usersManagement/login"),
       user: path.resolve("./api/v1/routes/usersManagement/user"),
+    },
+  },
+  v2: {
+    path: path.resolve("./api/v2/v2"),
+    redisModels: {
+      shapeModel: path.resolve("./api/v2/redisModels/ShapesModel"),
+    },
+    controllers: {
+      register: path.resolve("./api/v2/controllers/usersManagement/register"),
+      board: path.resolve("./api/v2/controllers/board"),
+      resendVerificationMail: path.resolve(
+        "./api/v2/controllers/usersManagement/resendVerificationMail"
+      ),
+      verifyEmail: path.resolve(
+        "./api/v2/controllers/usersManagement/verifyEmail"
+      ),
+      login: path.resolve("./api/v2/controllers/usersManagement/login"),
+      user: path.resolve("./api/v2/controllers/usersManagement/user"),
+    },
+    validators: {
+      register: path.resolve("./api/v2/validators/usersManagement/register"),
+      board: path.resolve("./api/v2/validators/board"),
+      resendVerificationMail: path.resolve(
+        "./api/v2/validators/usersManagement/resendVerificationMail"
+      ),
+      login: path.resolve("./api/v2/validators/usersManagement/login"),
+      isAuthorized: path.resolve("./api/v2/validators/isAuthorized"),
+    },
+    routes: {
+      register: path.resolve("./api/v2/routes/usersManagement/register"),
+      board: path.resolve("./api/v2/routes/board"),
+      resendVerificationMail: path.resolve(
+        "./api/v2/routes/usersManagement/resendVerificationMail"
+      ),
+      verifyEmail: path.resolve("./api/v2/routes/usersManagement/verifyEmail"),
+      login: path.resolve("./api/v2/routes/usersManagement/login"),
+      user: path.resolve("./api/v2/routes/usersManagement/user"),
     },
   },
 };
