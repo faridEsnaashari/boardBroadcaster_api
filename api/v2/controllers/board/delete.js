@@ -12,7 +12,11 @@ const deleteController = async (req, res) => {
       return res.responser(NOTFOUND_ERR, "board not found");
     }
 
-    res.responser(SUCCESS_MSG, "board has been deleted successfully");
+    res.responser(
+      SUCCESS_MSG,
+      "board has been deleted successfully",
+      deletedBoard
+    );
   } catch (err) {
     console.error(err);
 
