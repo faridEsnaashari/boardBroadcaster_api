@@ -20,7 +20,7 @@ const get = async (req, res) => {
     });
     await sendVerificationEmail(
       user.email,
-      `${global.env.GENERAL.APP_URL}/signup/verify_email/${token}`,
+      `${global.env.GENERAL.APP_URL}/signup/verify-email/${token}`,
       user.name
     );
 

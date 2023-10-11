@@ -36,7 +36,7 @@ const post = async (req, res) => {
   try {
     await sendVerificationEmail(
       email,
-      `${global.env.GENERAL.APP_URL}/signup/verify_email/${token}`,
+      `${global.env.GENERAL.APP_URL}/signup/verify-email/${token}`,
       name
     );
   } catch (err) {
