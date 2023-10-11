@@ -4,7 +4,7 @@ const addOrModifyShape = async (shape, room) => {
   try {
     const shapes = await redisClient.get(room);
 
-    if (!shape) {
+    if (!shapes) {
       return await redisClient.set(room, JSON.stringify([shape]));
     }
 
