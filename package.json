@@ -8,8 +8,7 @@
     "format": "prettier --write .",
     "format:api": "prettier --write api",
     "start:dev": "NODE_ENV=developement nodemon",
-    "start:production": "npm run build && NODE_ENV=production node ./dist/server.js",
-    "build": "rimraf ./dist && tsc"
+    "start:production": "NODE_ENV=production node ./server.js"
   },
   "author": "",
   "license": "ISC",
