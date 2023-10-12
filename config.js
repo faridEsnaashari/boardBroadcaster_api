@@ -28,11 +28,6 @@ const env = {
     GMAIL_ID: process.env.GMAIL_ID,
     GMAIL_PASSWORD: process.env.GMAIL_PASSWORD,
   },
-  SOCKET: {
-    CORS: {
-      ORIGIN: process.env.SOCKET_CORS_ORIGIN,
-    },
-  },
   REDIS: {
     CONNECTION_CONFIG: process.env.REDIS_CONNECTION_CONFIG,
   },
