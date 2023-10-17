@@ -101,6 +101,7 @@ const paths = {
       ),
       login: path.resolve("./api/v2/controllers/usersManagement/login"),
       user: path.resolve("./api/v2/controllers/usersManagement/user"),
+      logout: path.resolve("./api/v2/controllers/usersManagement/logout"),
     },
     validators: {
       register: path.resolve("./api/v2/validators/usersManagement/register"),
@@ -120,6 +121,7 @@ const paths = {
       verifyEmail: path.resolve("./api/v2/routes/usersManagement/verifyEmail"),
       login: path.resolve("./api/v2/routes/usersManagement/login"),
       user: path.resolve("./api/v2/routes/usersManagement/user"),
+      logout: path.resolve("./api/v2/routes/usersManagement/logout"),
     },
   },
 };
